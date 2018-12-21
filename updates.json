@@ -1,0 +1,8 @@
+{
+	"name" : "Secretum Custom Frontpages",
+	"version" : "0.0.2",
+	"download_url" : "https://github.com/SecretumTheme/secretum-fp/archive/0.0.2.zip",
+	"sections" : {
+		"description" : "Secretum Frontpages allows developers to provide a custom frontpage post type that can be any adapted theme."
+	}
+}

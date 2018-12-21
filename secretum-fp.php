@@ -5,7 +5,7 @@ namespace SecretumFP;
  * Plugin Name: Secretum Custom Frontpages
  * Plugin URI: https://github.com/SecretumTheme/secretum-fp
  * Description: Secretum Frontpages allows developers to provide a custom frontpage post type that can be any adapted theme.
- * Version: 0.0.1
+ * Version: 0.0.2
  * License: GNU GPLv3
  * Copyright (c) 2018 Secretum Theme
  * Author: Secretum Theme
@@ -18,6 +18,7 @@ namespace SecretumFP;
 
 
 // Constants
+define('SECRETUM_FP',                   '0.0.2');
 define('SECRETUM_FP_WP_MIN_VERSION',    '3.8');
 define('SECRETUM_FP_PLUGIN_FILE',       __FILE__);
 define('SECRETUM_FP_PLUGIN_DIR',        dirname(SECRETUM_FP_PLUGIN_FILE));
@@ -67,3 +68,13 @@ require SECRETUM_FP_PLUGIN_DIR . '/functions.php';
 
 // Run Plugin
 add_action('after_setup_theme', array('\SecretumFP\PluginStart', 'instance'), 0);
+
+// Secretum Updater Plugin
+if (file_exists(WP_PLUGIN_DIR . '/secretum-updater/puc/plugin-update-checker.php')) {
+    include_once(WP_PLUGIN_DIR . '/secretum-updater/puc/plugin-update-checker.php');
+    $secretum_hf_updater = \Puc_v4_Factory::buildUpdateChecker(
+        'https://raw.githubusercontent.com/SecretumTheme/secretum-fp/master/updates.json',
+        SECRETUM_FP_PLUGIN_FILE,
+        'secretum-fp'
+    );
+}
